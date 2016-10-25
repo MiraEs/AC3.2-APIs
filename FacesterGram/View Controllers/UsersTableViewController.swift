@@ -11,37 +11,50 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     // Describe what these three keywords indicate about UserTableViewCellIdentifier
     private static let UserTableViewCellIdentifier: String = "UserTableViewCellIdentifier"
-
+    internal var randomUser = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        APIRequestManager.manager.getRandomUserData { (data: Data?) in
+            if data != nil {
+                if let users = User.users(from: data!) {
+                    print("We've got users! \(users)")
+                    self.randomUser = users
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+                
+                dump(data)
+            }
+            
+        }
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return randomUser.count
     }
-
-  
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCellIdentifier", for: indexPath)
+        
         // Configure the cell...
-
+        cell.textLabel?.text = self.randomUser[indexPath.row].firstName
+        //cell.detailTextLabel?.text = self.randomUser[indexPath.row].username
         return cell
     }
- 
-
+    
+    
 }
