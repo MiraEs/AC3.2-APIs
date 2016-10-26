@@ -20,7 +20,6 @@ class UsersTableViewController: UITableViewController {
                 if let users = User.users(from: data!) {
                     print("We've got users! \(users)")
                     self.randomUser = users
-                    
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -52,7 +51,7 @@ class UsersTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.textLabel?.text = self.randomUser[indexPath.row].firstName
-        //cell.detailTextLabel?.text = self.randomUser[indexPath.row].username
+        cell.detailTextLabel?.text = self.randomUser[indexPath.row].username
         return cell
     }
     
