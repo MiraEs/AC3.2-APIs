@@ -27,11 +27,27 @@ class UsersTableViewController: UITableViewController {
                 
                 dump(data)
             }
-            
         }
-        
+        self.loadUsers()
+        self.refreshControl?.addTarget(self, action: #selector(refreshRequested(_:)), for: .valueChanged)
     }
     
+    func loadUsers() {
+        APIRequestManager.manager.getRandomUserData { (data: Data?) in
+            if data != nil {
+                if let users = User.users(from: data!) {
+                    print("We've got users! \(users)")
+                    self.randomUser = users
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    func refreshRequested(_ sender: UIRefreshControl) {
+        self.loadUsers()
+    }
     
     // MARK: - Table view data source
     
