@@ -45,6 +45,7 @@ class UsersTableViewController: UITableViewController {
             }
         }
     }
+    
     func refreshRequested(_ sender: UIRefreshControl) {
         self.loadUsers()
     }
