@@ -16,6 +16,8 @@
 		146EFA181DBAED0D00592B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA171DBAED0D00592B9A /* User.swift */; };
 		146EFA1C1DBAED5600592B9A /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */; };
 		E3486CD91DC1930900D80898 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3486CD81DC1930900D80898 /* Extension.swift */; };
+		E362200D1DC27DF500BFDF47 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362200C1DC27DF500BFDF47 /* SettingsTableViewController.swift */; };
+		E362200F1DC28FF300BFDF47 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362200E1DC28FF300BFDF47 /* SettingsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		146EFA171DBAED0D00592B9A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIRequestManager.swift; path = Managers/APIRequestManager.swift; sourceTree = "<group>"; };
 		E3486CD81DC1930900D80898 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		E362200C1DC27DF500BFDF47 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E362200E1DC28FF300BFDF47 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				146EFA151DBAECED00592B9A /* UsersTableViewController.swift */,
+				E362200C1DC27DF500BFDF47 /* SettingsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */,
+				E362200E1DC28FF300BFDF47 /* SettingsManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -244,6 +250,8 @@
 			files = (
 				E3486CD91DC1930900D80898 /* Extension.swift in Sources */,
 				146EFA1C1DBAED5600592B9A /* APIRequestManager.swift in Sources */,
+				E362200D1DC27DF500BFDF47 /* SettingsTableViewController.swift in Sources */,
+				E362200F1DC28FF300BFDF47 /* SettingsManager.swift in Sources */,
 				146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */,
 				146EF9F51DB9830E00592B9A /* AppDelegate.swift in Sources */,
 				146EFA181DBAED0D00592B9A /* User.swift in Sources */,
