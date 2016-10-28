@@ -93,7 +93,7 @@ internal struct User {
                                            state: state,
                                            username: username,
                                            emailAddress: email,
-                                           id: id["value"] ?? "N/A",
+                                           id: id["value"] ?? "N/A", //fix this to [String:AnyObject]
                                            thumbnailURL: thumbnail)
                 
                 usersToReturn?.append(validUser)
