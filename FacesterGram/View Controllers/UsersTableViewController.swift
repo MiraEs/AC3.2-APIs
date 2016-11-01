@@ -16,38 +16,27 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIRequestManager.manager.getRandom(user: 5, gender: .male, nationality: .GB) { (data: Data?) in
-            
-            if data != nil {
-                if let users = User.users(from: data!){
-                    print("We've got users! \(users)")
-                    self.randomUser = users
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-                
-                dump(data)
-            }
-        }
+        
         self.loadUsers()
         self.refreshControl?.addTarget(self, action: #selector(refreshRequested(_:)), for: .valueChanged)
-        //Bar button
+
         
     }
     
     func loadUsers() {
-        APIRequestManager.manager.getRandom(user: 5, gender: .male, nationality: .GB) { (data: Data?) in
+        APIRequestManager.manager.getRandom(user: SettingManager.manager.results, gender: SettingManager.manager.gender, nationality: SettingManager.manager.nationality) { (data: Data?) in
             if data != nil {
                 if let users = User.users(from: data!) {
                     print("We've got users! \(users)")
                     self.randomUser = users
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
+                        self.tableView.refreshControl?.endRefreshing()
                     }
                 }
             }
         }
+        
     }
     
     func refreshRequested(_ sender: UIRefreshControl) {

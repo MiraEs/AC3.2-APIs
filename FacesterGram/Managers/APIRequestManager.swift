@@ -7,15 +7,7 @@
 //
 
 import Foundation
-/*
-enum UserGender: String {
-    case male, female, both
-}
 
-enum UserNationality: String {
-    case AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NL, NZ, TR, US, all
-}
-*/
 internal class APIRequestManager {
     private static let randomAPIEndpoint: URL = URL(string: "https://randomuser.me/api/")!
     

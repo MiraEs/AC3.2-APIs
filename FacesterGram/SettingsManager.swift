@@ -48,7 +48,7 @@ internal class SettingManager: SliderCellDelegate {
     }
     
     //function called from protocol
-    func sliderDidChange(_ value: Int) {
+    func changedTheSliderTo(value: Int) {
         self.updateNumberOfResults(value)
     }
 }

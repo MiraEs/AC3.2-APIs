@@ -72,27 +72,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" rowHeight="60" id="bnA-Hi-OEi">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" rowHeight="60" id="bnA-Hi-OEi" customClass="SliderTableVIewCellTableViewCell" customModule="FacesterGram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bnA-Hi-OEi" id="y3Y-1g-Ggw">
-                                    <frame key="frameInset" width="375" height="59"/>
+                                    <frame key="frameInset" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of results:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-Kf-DF3">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="TQ5-xw-OT1"/>
+                                                <constraint firstAttribute="width" constant="91" id="gIz-9W-uIN"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KeV-o7-ltB">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="KeV-o7-ltB">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Sq6-eo-z6o"/>
                                             </constraints>
                                             <connections>
-                                                <action selector="didChangeValue:" destination="Cpk-AD-MMw" eventType="valueChanged" id="Sbv-67-fxT"/>
+                                                <action selector="didChangeValue:" destination="bnA-Hi-OEi" eventType="valueChanged" id="1RQ-rM-OFL"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Z2-zt-euR">
@@ -117,22 +118,73 @@
                                         <constraint firstItem="bDP-Kf-DF3" firstAttribute="leading" secondItem="y3Y-1g-Ggw" secondAttribute="leadingMargin" constant="8" id="xt7-G0-CEa"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="numberOfResultsLabel" destination="bDP-Kf-DF3" id="QkO-C2-CZA"/>
+                                    <outlet property="resultsLabel" destination="5Z2-zt-euR" id="pZ4-DH-qMx"/>
+                                    <outlet property="slider" destination="KeV-o7-ltB" id="HYE-bE-Pfa"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentedControlCell" rowHeight="60" id="Q7J-1w-XcR">
+                            <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentedControlCell" rowHeight="60" id="Q7J-1w-XcR" customClass="SegementedTableViewCell" customModule="FacesterGram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q7J-1w-XcR" id="kWu-Xi-Dtn">
                                     <frame key="frameInset" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="j3A-M8-DdL">
+                                            <segments>
+                                                <segment title="First"/>
+                                                <segment title="Second"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="genderSegmentedControl:" destination="Q7J-1w-XcR" eventType="valueChanged" id="EZ9-Bt-hEx"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xa9-A0-xZK">
+                                            <frame key="frameInset" minX="8" minY="20" width="111" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="j3A-M8-DdL" firstAttribute="leading" secondItem="kWu-Xi-Dtn" secondAttribute="leadingMargin" constant="70" id="dj4-vy-01C"/>
+                                        <constraint firstItem="j3A-M8-DdL" firstAttribute="centerX" secondItem="kWu-Xi-Dtn" secondAttribute="centerX" id="wEa-as-HIq"/>
+                                        <constraint firstItem="j3A-M8-DdL" firstAttribute="centerY" secondItem="kWu-Xi-Dtn" secondAttribute="centerY" id="yfF-e7-rxX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="genderSegmentedControl" destination="j3A-M8-DdL" id="MCf-oq-Gmp"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="60" id="uEZ-22-si4">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="60" id="uEZ-22-si4" customClass="SwitchTableViewCell" customModule="FacesterGram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="212" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uEZ-22-si4" id="d5D-lx-LTa">
                                     <frame key="frameInset" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9d-L9-gME">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="57" id="DYE-GD-eJe"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gE-nd-cJr"/>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2gE-nd-cJr" firstAttribute="centerX" secondItem="d5D-lx-LTa" secondAttribute="centerX" id="S9j-wr-m4U"/>
+                                        <constraint firstItem="E9d-L9-gME" firstAttribute="top" secondItem="d5D-lx-LTa" secondAttribute="topMargin" constant="11" id="dms-Fr-Tio"/>
+                                        <constraint firstItem="2gE-nd-cJr" firstAttribute="leading" secondItem="E9d-L9-gME" secondAttribute="trailing" constant="98" id="mqK-01-Ajj"/>
+                                        <constraint firstItem="2gE-nd-cJr" firstAttribute="centerY" secondItem="E9d-L9-gME" secondAttribute="centerY" id="o0n-Tl-Q4e"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="offOnSwitch" destination="2gE-nd-cJr" id="gTh-tx-YzC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -140,14 +192,10 @@
                             <outlet property="delegate" destination="Cpk-AD-MMw" id="8pL-YS-9fR"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="numberOfResultsLabel" destination="5Z2-zt-euR" id="mVd-02-kWT"/>
-                        <outlet property="slider" destination="KeV-o7-ltB" id="CVC-6y-JMK"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUW-QS-F1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="21"/>
+            <point key="canvasLocation" x="1397.5999999999999" y="20.239880059970016"/>
         </scene>
         <!--iFacesterGram-->
         <scene sceneID="aOb-fg-UMZ">
