@@ -12,6 +12,7 @@ class UsersTableViewController: UITableViewController {
     // Describe what these three keywords indicate about UserTableViewCellIdentifier
     private static let UserTableViewCellIdentifier: String = "UserTableViewCellIdentifier"
     internal var randomUser = [User]()
+    let sm = SettingManager.manager
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class UsersTableViewController: UITableViewController {
         
         
     }
-    let sm = SettingManager.manager
+    
     func loadUsers() {
         APIRequestManager.manager.getRandom(user: sm.results, gender: sm.gender, nationality: sm.nationality) { (data: Data?) in
             if data != nil {
@@ -46,12 +47,10 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return randomUser.count
     }
     
@@ -62,6 +61,18 @@ class UsersTableViewController: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = self.randomUser[indexPath.row].firstName
         cell.detailTextLabel?.text = self.randomUser[indexPath.row].username
+        
+        //image
+//        APIRequestManager.manager.getData { (data: Data?) in
+//            if let validData = data,
+//                let image = UIImage(data: validData) {
+//                DispatchQueue.main.async {
+//                    acvc.imageView.image = image
+//                    acvc.setNeedsLayout()
+//                }
+//
+//            }
+//        }
         return cell
     }
     

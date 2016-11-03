@@ -33,6 +33,25 @@ internal class APIRequestManager {
             }.resume()
         
     }
+    
+    func getData(completion: @escaping ((Data?)->Void)) {
+        
+        let newURL: URL = URL(string: "https://randomuser.me/api/?results=")!
+        
+        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
+        session.dataTask(with: newURL) { (data: Data?, response: URLResponse?, error: Error?) in
+            if error != nil {
+                print("Error encountered in API request: \(error?.localizedDescription)")
+            }
+            
+            if data != nil {
+                print("Data returned in response")
+                completion(data)
+            }
+            
+            }.resume()
+        
+    }
 }
 
 

@@ -23,7 +23,7 @@ class SliderTableViewCell: UITableViewCell {
     
     internal func updateSlider(min: Int, max: Int, current: Int) {
         self.slider.minimumValue = 1
-        self.slider.maximumValue = 200
+        self.slider.maximumValue = 100
         self.slider.setValue(Float(current), animated: true)
         self.resultsLabel.text = "\(current)"
         
@@ -32,7 +32,7 @@ class SliderTableViewCell: UITableViewCell {
     @IBAction func didChangeValue(_ sender: UISlider) {
         self.resultsLabel.text = "\(Int(sender.value))"
         self.delegate?.changedTheSliderTo(value: Int(sender.value))
-        
+       
     }
 }
 

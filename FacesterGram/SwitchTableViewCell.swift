@@ -7,12 +7,24 @@
 //
 
 import UIKit
+protocol  SwitchCellDelegate {
+    func changeSegmentControl(segmentIndex:Int)
+}
 
 class SwitchTableViewCell: UITableViewCell {
 
-   
-    @IBOutlet weak var offOnSwitch: UISwitch!
-
+    @IBOutlet weak var nationalitySwitch: UISwitch!
+    var delegate: SwitchCellDelegate?
+    static let cellIdentifier = "SwitchCell"
     
+    
+    internal func updateSwitch(index: Int) {
+        
+    }
+    
+    @IBAction func nationalitySwitch(_ sender: UISwitch) {
+    
+    }
+  
 
 }

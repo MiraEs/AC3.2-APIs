@@ -14,9 +14,6 @@ class SettingsTableViewController: UITableViewController {
     
     //set up outlets and give self.slider the properties set in SettingsManager swift file -- did change value function -> call manager function here
     
-  
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,10 +27,9 @@ class SettingsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
     
     
@@ -45,23 +41,23 @@ class SettingsTableViewController: UITableViewController {
         case 0:
             //that's weird i dont undestand this yet -- 
             //cell currently does not know the properties of the SlideCell class properties, need to make newCell to take in properties so function can update those here in tableView (kinda like weird segue?)
-            cell = tableView.dequeueReusableCell(withIdentifier: "SliderCell")
+            cell = tableView.dequeueReusableCell(withIdentifier: SliderTableViewCell.cellIdentifier)
             if let sliderCell = cell as? SliderTableViewCell {
                 sliderCell.delegate = SettingManager.manager
+                
             }
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "SegmentedControlCell")
+            cell = tableView.dequeueReusableCell(withIdentifier: SegementedTableViewCell.cellIdentifier)
             if let segmentCell = cell as? SegementedTableViewCell {
                 segmentCell.delegate = SettingManager.manager
+                
             }
         default:
-            break
-            /*
-            cell = tableView.dequeueReusableCell(withIdentifier: "SegmentedControlCell")
-            if let segmentCell = cell as? SegementedTableViewCell {
-                segmentCell.delegate = SettingManager.manager
+            cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.cellIdentifier)
+            if let switchCell = cell as? SwitchTableViewCell {
+                switchCell.delegate = SettingManager.manager
             }
- */
+ 
         }
         
         return cell
@@ -69,20 +65,6 @@ class SettingsTableViewController: UITableViewController {
     
     //use switch statement changing indexpath.section for each prototype cell vs. per row?
     
-    
-    
-    // MARK: - Navigation
-    /*
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     if let gvc = segue.destination as? UsersTableViewController, sender: Any? {
-     
-     
-     }
-     }
-     */
     
     
 }

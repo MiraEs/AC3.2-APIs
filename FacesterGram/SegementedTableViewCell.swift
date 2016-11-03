@@ -13,16 +13,17 @@ protocol  SegmentedCellDelegate {
 }
 class SegementedTableViewCell: UITableViewCell {
     var delegate: SegmentedCellDelegate?
-    static let cellIdentifier = "SegementedTableViewCellIdentifier"
+    static let cellIdentifier = "SegmentedControlCell"
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     
    
     internal func updateSelectedSegment(index: Int) {
-        genderSegmentedControl.selectedSegmentIndex = index
+        
     }
    
     @IBAction func genderSegmentedControl(_ sender: UISegmentedControl) {
             self.delegate?.changeSegmentControl(segmentIndex: sender.selectedSegmentIndex)
+        print("segment clicked: \(sender.selectedSegmentIndex)")
     }
     
     
