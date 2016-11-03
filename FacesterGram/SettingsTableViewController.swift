@@ -13,7 +13,7 @@ class SettingsTableViewController: UITableViewController {
 
     
     //set up outlets and give self.slider the properties set in SettingsManager swift file -- did change value function -> call manager function here
-    static let callIdentifier: String = "SliderCell"
+    
   
     
     
@@ -46,13 +46,23 @@ class SettingsTableViewController: UITableViewController {
             //that's weird i dont undestand this yet -- 
             //cell currently does not know the properties of the SlideCell class properties, need to make newCell to take in properties so function can update those here in tableView (kinda like weird segue?)
             cell = tableView.dequeueReusableCell(withIdentifier: "SliderCell")
-            if let newCell = cell as? SliderTableVIewCellTableViewCell {
-                newCell.delegate = SettingManager.manager
+            if let sliderCell = cell as? SliderTableViewCell {
+                sliderCell.delegate = SettingManager.manager
+            }
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "SegmentedControlCell")
+            if let segmentCell = cell as? SegementedTableViewCell {
+                segmentCell.delegate = SettingManager.manager
             }
         default:
+            break
+            /*
             cell = tableView.dequeueReusableCell(withIdentifier: "SegmentedControlCell")
+            if let segmentCell = cell as? SegementedTableViewCell {
+                segmentCell.delegate = SettingManager.manager
+            }
+ */
         }
-        
         
         return cell
     }

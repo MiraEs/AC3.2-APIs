@@ -20,7 +20,7 @@ enum UserField: String {
     case gender, name, location, email, login, id, picture, nat, none
 }
 
-internal class SettingManager: SliderCellDelegate {
+internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
     var results: Int
     var gender: UserGender
     var nationality: UserNationality
@@ -37,6 +37,7 @@ internal class SettingManager: SliderCellDelegate {
         self.excluded = .name
     }
     
+    //slider function
     func updateNumberOfResults(_ results: Int) {
         if results < minResults {
             self.results =  minResults
@@ -47,8 +48,28 @@ internal class SettingManager: SliderCellDelegate {
         }
     }
     
-    //function called from protocol
+    //segmented functions
+    func updateGender(_ segmentIndex: Int) {
+        switch results {
+        case 0:
+            self.gender = .both
+        case 1:
+            self.gender = .male
+        default:
+            self.gender = .female
+        }
+    }
+    
+    //MARK: Delegate functions
+    //function called from slideCell protocol
     func changedTheSliderTo(value: Int) {
         self.updateNumberOfResults(value)
     }
+    
+    //function called from segmentedCell protocol
+    func changeSegmentControl(segmentIndex: Int) {
+        self.updateGender(segmentIndex)
+    }
+    
 }
+

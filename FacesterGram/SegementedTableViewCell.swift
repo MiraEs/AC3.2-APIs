@@ -9,18 +9,20 @@
 import UIKit
 
 protocol  SegmentedCellDelegate {
-    func changeSegmentControl(value:Int)
+    func changeSegmentControl(segmentIndex:Int)
 }
 class SegementedTableViewCell: UITableViewCell {
-   
     var delegate: SegmentedCellDelegate?
     static let cellIdentifier = "SegementedTableViewCellIdentifier"
-    
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     
    
+    internal func updateSelectedSegment(index: Int) {
+        genderSegmentedControl.selectedSegmentIndex = index
+    }
+   
     @IBAction func genderSegmentedControl(_ sender: UISegmentedControl) {
-        print("segemented Control")
+            self.delegate?.changeSegmentControl(segmentIndex: sender.selectedSegmentIndex)
     }
     
     

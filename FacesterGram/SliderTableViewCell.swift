@@ -12,7 +12,7 @@ protocol SliderCellDelegate {
     func changedTheSliderTo(value:Int)
 }
 
-class SliderTableVIewCellTableViewCell: UITableViewCell {
+class SliderTableViewCell: UITableViewCell {
     var delegate: SliderCellDelegate?
     
     static let cellIdentifier = "SliderCell"
@@ -20,12 +20,6 @@ class SliderTableVIewCellTableViewCell: UITableViewCell {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var numberOfResultsLabel: UILabel!
     
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
     internal func updateSlider(min: Int, max: Int, current: Int) {
         self.slider.minimumValue = 1

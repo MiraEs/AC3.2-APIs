@@ -155,8 +155,8 @@
 		E32768171DC8EB5800AD15B6 /* View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E32768151DC8EB0F00AD15B6 /* SegementedTableViewCell.swift */,
 				E32768181DC8ED9C00AD15B6 /* SliderTableViewCell.swift */,
+				E32768151DC8EB0F00AD15B6 /* SegementedTableViewCell.swift */,
 				E327681A1DC90DC200AD15B6 /* SwitchTableViewCell.swift */,
 			);
 			name = "View Cells";

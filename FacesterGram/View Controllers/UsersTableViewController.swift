@@ -19,12 +19,12 @@ class UsersTableViewController: UITableViewController {
         
         self.loadUsers()
         self.refreshControl?.addTarget(self, action: #selector(refreshRequested(_:)), for: .valueChanged)
-
+        
         
     }
-    
+    let sm = SettingManager.manager
     func loadUsers() {
-        APIRequestManager.manager.getRandom(user: SettingManager.manager.results, gender: SettingManager.manager.gender, nationality: SettingManager.manager.nationality) { (data: Data?) in
+        APIRequestManager.manager.getRandom(user: sm.results, gender: sm.gender, nationality: sm.nationality) { (data: Data?) in
             if data != nil {
                 if let users = User.users(from: data!) {
                     print("We've got users! \(users)")
