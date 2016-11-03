@@ -53,13 +53,15 @@ class SettingsTableViewController: UITableViewController {
                 
             }
         default:
+            break
+            /*
             cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.cellIdentifier)
             if let switchCell = cell as? SwitchTableViewCell {
                 switchCell.delegate = SettingManager.manager
             }
+ */
  
         }
-        
         return cell
     }
     

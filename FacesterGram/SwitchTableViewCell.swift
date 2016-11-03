@@ -8,7 +8,7 @@
 
 import UIKit
 protocol  SwitchCellDelegate {
-    func changeSegmentControl(segmentIndex:Int)
+    func selectionDidChange(option: String, value: Bool)
 }
 
 class SwitchTableViewCell: UITableViewCell {
@@ -18,8 +18,8 @@ class SwitchTableViewCell: UITableViewCell {
     static let cellIdentifier = "SwitchCell"
     
     
-    internal func updateSwitch(index: Int) {
-        
+    internal func updateElements(key: String, value: Bool) {
+    
     }
     
     @IBAction func nationalitySwitch(_ sender: UISwitch) {

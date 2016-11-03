@@ -20,17 +20,19 @@ enum UserField: String {
     case gender, name, location, email, login, id, picture, nat, none
 }
 
-internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate, SwitchCellDelegate {
+internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
     var results: Int
     var gender: UserGender
     var nationality: UserNationality
     var excluded: UserField
+    //var sortedNationalityKeys: [String]
+    //var sortedFieldKeys: [String]
     
     let minResults: Int = 1
     let maxResults: Int = 100
     
     // SwitchCellDicts
-    var userNationalitySwitchStatus: [UserNationality : Bool] = [
+    /*var userNationalitySwitchStatus: [UserNationality : Bool] = [
         UserNationality.AU : true, UserNationality.BR: true,
         UserNationality.CA : true, UserNationality.CH : true,
         UserNationality.DE : true, UserNationality.DK : true,
@@ -46,6 +48,7 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate, Switch
         UserField.login : true, UserField.id : true,
         UserField.picture : true, UserField.nat : true
     ]
+ */
     
     //
     static let manager: SettingManager = SettingManager()
@@ -79,6 +82,18 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate, Switch
         }
     }
     
+    /*/switch functions
+    //This [String] should be the keys for the userNationalitySwitchStatus/userFieldSwitchStatus sorted alphabetically, in ascending order.
+    func userNationality(nationality: [UserNationality]) -> [UserNationality] {
+        func forward(_ s1: String, _ s2: String) -> Bool {
+            return s1 < s2
+        }
+        nationality.sorted(by: forward)
+    }
+ */
+    
+    
+    
     //MARK: Delegate functions
     
     //function called from slideCell protocol
@@ -93,5 +108,10 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate, Switch
     }
     
     //function called from switchCell protocol
+    /*
+    func selectionDidChange(option: String, value: Bool) {
+        return
+    }
+ */
 }
 
