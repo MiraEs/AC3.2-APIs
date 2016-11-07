@@ -20,7 +20,7 @@ enum UserField: String {
     case gender, name, location, email, login, id, picture, nat, none
 }
 
-internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
+internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate, SwitchCellDelegate {
     var results: Int
     var gender: UserGender
     var nationality: UserNationality
@@ -32,7 +32,7 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
     let maxResults: Int = 100
     
     // SwitchCellDicts
-    /*var userNationalitySwitchStatus: [UserNationality : Bool] = [
+    var userNationalitySwitchStatus: [UserNationality : Bool] = [
         UserNationality.AU : true, UserNationality.BR: true,
         UserNationality.CA : true, UserNationality.CH : true,
         UserNationality.DE : true, UserNationality.DK : true,
@@ -48,7 +48,7 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
         UserField.login : true, UserField.id : true,
         UserField.picture : true, UserField.nat : true
     ]
- */
+ 
     
     //
     static let manager: SettingManager = SettingManager()
@@ -57,6 +57,8 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
         self.gender = .female
         self.nationality = .AU
         self.excluded = .name
+        self.userNationalitySwitchStatus = [UserNationality.AU: true]
+        self.userFieldsSwitchStatus = [UserField.name: true]
     }
     
     //slider function
@@ -82,15 +84,14 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
         }
     }
     
-    /*/switch functions
+    //switch functions
     //This [String] should be the keys for the userNationalitySwitchStatus/userFieldSwitchStatus sorted alphabetically, in ascending order.
+    /*
     func userNationality(nationality: [UserNationality]) -> [UserNationality] {
-        func forward(_ s1: String, _ s2: String) -> Bool {
-            return s1 < s2
-        }
-        nationality.sorted(by: forward)
+        
     }
  */
+ 
     
     
     
@@ -108,10 +109,10 @@ internal class SettingManager: SliderCellDelegate, SegmentedCellDelegate {
     }
     
     //function called from switchCell protocol
-    /*
+    
     func selectionDidChange(option: String, value: Bool) {
         return
     }
- */
+ 
 }
 

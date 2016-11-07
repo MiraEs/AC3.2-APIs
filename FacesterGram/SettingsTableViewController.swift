@@ -50,17 +50,13 @@ class SettingsTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: SegementedTableViewCell.cellIdentifier)
             if let segmentCell = cell as? SegementedTableViewCell {
                 segmentCell.delegate = SettingManager.manager
-                
             }
-        default:
-            break
-            /*
+        default: //there's a nil value here for the switch outlet? keeps crashing
             cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.cellIdentifier)
             if let switchCell = cell as? SwitchTableViewCell {
                 switchCell.delegate = SettingManager.manager
+            
             }
- */
- 
         }
         return cell
     }

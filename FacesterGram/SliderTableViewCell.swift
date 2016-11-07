@@ -22,8 +22,8 @@ class SliderTableViewCell: UITableViewCell {
     
     
     internal func updateSlider(min: Int, max: Int, current: Int) {
-        self.slider.minimumValue = 1
-        self.slider.maximumValue = 100
+        self.slider.minimumValue = Float(min)
+        self.slider.maximumValue = Float(max)
         self.slider.setValue(Float(current), animated: true)
         self.resultsLabel.text = "\(current)"
         
